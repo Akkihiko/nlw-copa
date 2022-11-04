@@ -21,7 +21,7 @@ export default function Home(props: HomeProps) {
     event.preventDefault();
 
     try {
-      const response = await api.post('/pools', {
+      const response = await api.post('/polls', {
         title: poolTitle,
       });
 
@@ -40,7 +40,7 @@ export default function Home(props: HomeProps) {
 
   return (
     <div className="max-w-[1124px] h-screen mx-auto grid grid-cols-2 items-center gap-28 py-16">
-      <main>
+      <main className="pb-10">
         <Image src={logoImg} alt="NLW Copa" />
 
         <h1 className="mt-16 text-white text-5xl font-bold leading-tight">Crie seu próprio bolão da copa e compartilhe entre amigos!</h1>
@@ -109,7 +109,7 @@ export const getStaticProps = async () => {
     guessCountResponse,
     userCountResponse
   ] = await Promise.all([
-    api.get('/pools/count'),
+    api.get('/polls/count'),
     api.get('/guesses/count'),
     api.get('/users/count'),
   ])

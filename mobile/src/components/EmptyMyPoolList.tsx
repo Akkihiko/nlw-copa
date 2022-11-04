@@ -1,19 +1,26 @@
 import { Row, Text, Pressable } from 'native-base';
+import { Share } from 'react-native';
 
 interface Props {
   code: string;
 }
 
 export function EmptyMyPoolList({ code }: Props) {
+  async function handleCodeShare() {
+    await Share.share({
+      message: 'Entre no meu bolão da NLW Copa! O código do meu bolão é: ' + code,
+    });
+  }
+
   return (
     <Row flexWrap="wrap" justifyContent="center" p={4}>
       <Text color="gray.200" fontSize="sm">
-        Esse bolão ainda não tem participantes, que tal 
+        Esse bolão ainda não tem participantes, que tal{' '}
       </Text>
 
-      <Pressable onPress={() => {}}>
+      <Pressable onPress={handleCodeShare}>
           <Text textDecorationLine="underline" color="yellow.500" textDecoration="underline">
-          compartilhar o código
+            compartilhar o código
           </Text>
       </Pressable>
 
